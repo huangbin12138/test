@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>interactive</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+      }
+
+      #app {
+        padding: 20px;
+      }
+
+      .banners {
+        width: 275px;
+        height: 200px;
+        /*overflow: hidden;*/
+        box-sizing: border-box;
+        border: 1px #a0a solid;
+      }
+
+      .banners .item {
+        transition: all .3s;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #ddd;
+      }
+
+      .item:last-child {
+        background-color: #adcccc;
+      }
+
+      .item:first-child {
+        background-color: #ccda19;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="prev"></div>
+      <div class="prev1"></div>
+      <div class="prev2"></div>
+      <div class="banners">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item test_aa">3</div>
+      </div>
+      <div class="next"></div>
+      <div class="next1"></div>
+      <div class="next2"></div>
+    </div>
+    <script src="js/global.js"></script>
+    <script>
+      'use strict';
+      let random = new Random();
+      let banner = new Html('.banners', random.string() + random.string(4, '0a'));
+      let prev = new Flash('.prev');
+      new Html('title').text(random.string(4, '一', '', false));
+
+      // prev.css({height: 300, background: '#ff0'})
+      //   // .opacity(0, 1, 2)
+      //   // .opacity(1, .3, 1)
+      //   // .opacity(.3, 1, 2)
+      //   // .opacity(1, .5, 3)
+      //   .opacity(.5, 1, 2);
+
+      banner.css('position', 'relative').child().css({
+        position: 'absolute'
+      });
+
+
+    </script>
+  </body>
+</html>
