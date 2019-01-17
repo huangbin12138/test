@@ -52,14 +52,16 @@
       new Html('title').text(random.string(4, '一', '', false));
       let cv = new Canvas('.cv', {width: '400', height: '400'});
       cv.css({border: '1px solid #d3d3d3'});
-      cv.setStyle({fillStyle: 'pink', strokeStyle: '#f00'})
-        .arcTo(200, 100, 300, 200, 50)
-        .setStyle({fillStyle: 'greenyellow', strokeStyle: '#000'})
-        .arcTo(300, 200, 200, 300, 50)
-        .setStyle({fillStyle: 'yellowgreen', strokeStyle: '#0ff'})
-        .arcTo(200, 300, 100, 200, 50)
-        .setStyle({fillStyle: 'hotpink', strokeStyle: '#f0f'})
-        .arcTo(100, 200, 200, 100, 50)
+      // cv.setStyle({fillStyle: 'pink', strokeStyle: '#f00'})
+      //   .arcTo(100, 0, 200, 100, 150, 'fill')
+      //   .setStyle({fillStyle: 'greenyellow', strokeStyle: '#000'})
+      //   .arcTo(200, 100, 100, 200, 150, 'fill')
+      //   .setStyle({fillStyle: 'yellowgreen', strokeStyle: '#0ff'})
+      //   .arcTo(100, 200, 0, 100, 150, 'fill')
+      //   .setStyle({fillStyle: 'hotpink', strokeStyle: '#f0f'})
+      //   .arcTo(0, 100, 100, 0, 150, 'fill')
+      // cv.demo1(0, 0, 100, 'pink', '', 1.5);
+      cv.bgDemo1(100, 'pink', '', 1.8);
     </script>
   </body>
 </html>

@@ -415,8 +415,9 @@ class Canvas extends Html {
     return this;
   }
 
-  draw(ctx, type = 'all') {
-    if (type === 'all') {
+  draw(ctx, type) {
+    typeof type !== 'string' && (type = '');
+    if (type === '') {
       ctx.fill();
       ctx.stroke();
     } else {
@@ -424,7 +425,7 @@ class Canvas extends Html {
     }
   }
 
-  rect(x, y, w, h, type = 'all') {
+  rect(x, y, w, h, type) {
     this.ctxs.map(ctx => {
       ctx.beginPath();
       ctx.rect(x, y, w, h);
@@ -433,7 +434,7 @@ class Canvas extends Html {
     return this;
   }
 
-  arc(cx, cy, r, starDeg, endDeg, type = 'all') {
+  arc(cx, cy, r, starDeg, endDeg, type) {
     this.ctxs.map(ctx => {
       ctx.beginPath();
       ctx.arc(cx, cy, r, starDeg / 180 * Math.PI, endDeg / 180 * Math.PI);
@@ -442,16 +443,40 @@ class Canvas extends Html {
     return this;
   }
 
-  arcTo(xx, xy, yx, yy, r, noArc = false, type = 'all') {
+  arcTo(xx, xy, yx, yy, r, type) {
     this.ctxs.map(ctx => {
       ctx.beginPath();
       ctx.moveTo(xx, xy);
       (xx - yx) * (xy - yy) > 0 ? (xx = yx) : (xy = yy);
       ctx.arcTo(xx, xy, yx, yy, r);
-      noArc && ctx.arcTo(xx, xy, yx, yy, r);
       ctx.lineTo(yx, yy);
       this.draw(ctx, type);
     });
+    return this;
+  }
+
+  demo1(x, y, size, fillStyle = '', strokeStyle = '', other = 1.5) {
+    if (!this.el || !(fillStyle || strokeStyle)) return;
+    let type = fillStyle && strokeStyle ? ''
+      : fillStyle ? 'fill'
+        : strokeStyle ? 'stroke' : '';
+    size /= 2;
+    let r = size * other;
+    return this.setStyle({fillStyle, strokeStyle})
+      .arcTo(size + x, y, size * 2 + x, size + y, r, type)
+      .arcTo(size * 2 + x, size + y, size + x, size * 2 + y, r, type)
+      .arcTo(size + x, size * 2 + y, x, size + y, r, type)
+      .arcTo(x, size + y, size + x, y, r, type);
+  }
+
+  bgDemo1(size, fillStyle, strokeStyle, other = 1.5) {
+    if (!this.el) return;
+    let {width, height} = this.el;
+    for (let i = 0; size * i < width; i++) {
+      for (let j = 0; size * j < height; j++) {
+        this.demo1(i * size, j * size, size, fillStyle, strokeStyle, other);
+      }
+    }
     return this;
   }
 }
