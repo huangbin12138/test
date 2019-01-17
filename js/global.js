@@ -2,8 +2,9 @@
 
 class Random {
 
-  number(max = 1, min = 0) {
-    return (Math.random() * (max - min + 1) + min);
+  number(max = 1, min = 0, fixed = 0) {
+    max < min && (max = [min, min = max][0]);
+    return (Math.random() * (max - min) + min).toFixed(fixed);
   }
 
   string(len, type, otherStr, canRepeat = true) {
@@ -64,7 +65,7 @@ class Html {
 
   constructor(query, id) {
     this.query = query;
-    this.id = id || 'h' + (Math.random() * 99999999 | 0);
+    this.id = id || this.string(7);
     if (query.constructor === Html) return query;
     this.els = this.isDom(query) ? [query]
       : Array.isArray(query) ? query.filter(e => this.isDom(e))
@@ -77,6 +78,63 @@ class Html {
 
   isDom(element) {
     return element && typeof element === 'object' && element.nodeType === 1 && typeof element.nodeName === 'string';
+  }
+
+  number(max = 1, min = 0, fixed = 0) {
+    max < min && (max = [min, min = max][0]);
+    return (Math.random() * (max - min) + min).toFixed(fixed);
+  }
+
+  string(len, type, otherStr, canRepeat = true) {
+    typeof type !== 'string' && (type = 'a');
+    if (typeof otherStr === 'string') {
+      otherStr = otherStr.split('');
+    } else if (Array.isArray(otherStr)) {
+      otherStr = otherStr.filter(e => e && typeof e === 'string');
+    } else {
+      otherStr = [];
+    }
+    isNaN(len) && (len = 1);
+    let str = [];
+    let reg = {
+      '[a-z]': [97, 122], // a-z
+      '[A-Z]': [65, 90], // A-Z
+      '[0-9]': [48, 57], // 0-9
+      '[\u4e00-\u9fa5]': [19968, 40869], // 汉字
+    };
+    let regs = Object.keys(reg)
+      .filter(k => new RegExp(k).test(type))
+      .map(e => reg[e]);
+    regs.push(...otherStr);
+    for (let l = regs.length; len > 0 && l; len--) {
+      let m = this.number(l - 1, 0) | 0;
+      let s = regs[m];
+      let n = this.number(s[1], s[0]) | 0;
+      if (!canRepeat && (str.includes(s) || str.includes(String.fromCharCode(n)))) {
+        len++;
+        if (typeof s === 'string') {
+          regs.splice(m, 1);
+          l--;
+        }
+        continue;
+      }
+      str.push(typeof s === 'string' ? s : String.fromCharCode(n));
+    }
+    return str.filter(e => e).join('');
+  }
+
+  color(min = 0, max = 255, type = 'rgb') {
+    min > max && (min = [max, max = min][0]);
+    min = min < 0 ? 0 : min;
+    max = max > 255 ? 255 : max;
+    let r = this.number(max, min) | 0;
+    let g = this.number(max, min) | 0;
+    let b = this.number(max, min) | 0;
+    if (type === 'rgb') {
+      return `rgb(${r}, ${g}, ${b})`;
+    } else {
+      return '#' + ((r << 16) | (g << 8) | b).toString(16);
+    }
   }
 
   html(value, isText = false) {
@@ -262,6 +320,21 @@ class Html {
     return null;
   }
 
+  on(event, callback, only) {
+    this.els.map(e => {
+      only && e.removeEventListener(event);
+      e.addEventListener(event, callback);
+    });
+    return this;
+  }
+
+  off(event, callback) {
+    this.els.map(e => {
+      e.removeEventListener(event, callback);
+    });
+    return this;
+  }
+
 }
 
 class Flash extends Html {
@@ -311,4 +384,74 @@ class Flash extends Html {
     return str;
   }
 
+}
+
+class Canvas extends Html {
+  constructor(query, config) {
+    super(query, config.id);
+    this.config = Object.assign({
+      ctxType: '2d'
+    }, config);
+    this.attr({
+      width: this.config.width,
+      height: this.config.height,
+    });
+    this.ctxs = this.els.map(e => e.getContext(this.config.ctxType));
+  }
+
+  setStyle(prop, value) {
+    let p = {};
+    if (typeof prop === 'string') {
+      if (value === undefined) {
+        return this.ctxs[0][prop];
+      }
+      p[prop] = value;
+    }
+    if (typeof prop === 'object') {
+      p = prop;
+    }
+
+    this.ctxs.map(ctx => Object.assign(ctx, p));
+    return this;
+  }
+
+  draw(ctx, type = 'all') {
+    if (type === 'all') {
+      ctx.fill();
+      ctx.stroke();
+    } else {
+      ctx[type]();
+    }
+  }
+
+  rect(x, y, w, h, type = 'all') {
+    this.ctxs.map(ctx => {
+      ctx.beginPath();
+      ctx.rect(x, y, w, h);
+      this.draw(ctx, type);
+    });
+    return this;
+  }
+
+  arc(cx, cy, r, starDeg, endDeg, type = 'all') {
+    this.ctxs.map(ctx => {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, starDeg / 180 * Math.PI, endDeg / 180 * Math.PI);
+      this.draw(ctx, type);
+    });
+    return this;
+  }
+
+  arcTo(xx, xy, yx, yy, r, noArc = false, type = 'all') {
+    this.ctxs.map(ctx => {
+      ctx.beginPath();
+      ctx.moveTo(xx, xy);
+      (xx - yx) * (xy - yy) > 0 ? (xx = yx) : (xy = yy);
+      ctx.arcTo(xx, xy, yx, yy, r);
+      noArc && ctx.arcTo(xx, xy, yx, yy, r);
+      ctx.lineTo(yx, yy);
+      this.draw(ctx, type);
+    });
+    return this;
+  }
 }
