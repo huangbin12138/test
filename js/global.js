@@ -66,7 +66,7 @@ class Html {
   constructor(query, id) {
     this.query = query;
     this.id = id || this.string(7);
-    if (query.constructor === Html) return query;
+    if (query && query.constructor === Html) return query;
     this.els = this.isDom(query) ? [query]
       : Array.isArray(query) ? query.filter(e => this.isDom(e))
         : typeof query === 'string' ? [...document.querySelectorAll(query)]
@@ -387,7 +387,7 @@ class Flash extends Html {
 }
 
 class Canvas extends Html {
-  constructor(query, config) {
+  constructor(query, config = {}) {
     super(query, config.id);
     this.config = Object.assign({
       ctxType: '2d'
@@ -425,6 +425,61 @@ class Canvas extends Html {
     }
   }
 
+  colorStop(gradient, start, end, colorList = []) {
+    let s = 0;
+    colorList = colorList.map((e, k) => {
+      let color = e.split(' ');
+      if (isNaN(color[0])) {
+        color = [s, color[0]];
+        s = s + (1 - s) / (colorList.length - k - 1);
+        s > 1 && (s = 1);
+        s < 0 && (s = 0);
+      } else {
+        s = parseFloat(color[0]);
+      }
+      return color;
+    });
+    let gra = null;
+    this.ctxs.map(ctx => {
+      if (gradient === 'radial') {
+        gra = ctx.createRadialGradient(start[0], start[1], start[2], end[0], end[1], end[2]);
+      } else if (gradient === 'pattern') {
+        gra = ctx.createPattern(start, end);
+      } else {
+        gra = ctx.createLinearGradient(start[0], start[1], end[0], end[1]);
+      }
+      colorList.map(c => gra.addColorStop(c[0], c[1]));
+    });
+    return gra;
+  }
+
+  font(text, x, y, type = 'fill') {
+    this.ctxs.map(ctx => {
+      if (type) {
+        ctx[`${type}Text`](text, x, y);
+      } else {
+        ctx.fillText(text, x, y);
+        ctx.strokeText(text, x, y);
+      }
+    });
+    return this;
+  }
+
+  toDataURL(type = 'image/png', encoderOptions) {
+    return this.el.toDataURL(type, encoderOptions);
+  }
+
+  measureText(text) {
+    return this.ctxs[0].measureText(text).width;
+  }
+
+  clear(x = 0, y = 0, w = this.config.width, h = this.config.height) {
+    this.ctxs.map(ctx => {
+      ctx.clearRect(x, y, w, h);
+    });
+    return this;
+  }
+
   rect(x, y, w, h, type) {
     this.ctxs.map(ctx => {
       ctx.beginPath();
@@ -455,26 +510,71 @@ class Canvas extends Html {
     return this;
   }
 
-  demo1(x, y, size, fillStyle = '', strokeStyle = '', other = 1.5) {
-    if (!this.el || !(fillStyle || strokeStyle)) return;
-    let type = fillStyle && strokeStyle ? ''
-      : fillStyle ? 'fill'
-        : strokeStyle ? 'stroke' : '';
-    size /= 2;
-    let r = size * other;
-    return this.setStyle({fillStyle, strokeStyle})
-      .arcTo(size + x, y, size * 2 + x, size + y, r, type)
-      .arcTo(size * 2 + x, size + y, size + x, size * 2 + y, r, type)
-      .arcTo(size + x, size * 2 + y, x, size + y, r, type)
-      .arcTo(x, size + y, size + x, y, r, type);
+  newDemo(demoName, config, args) {
+    let demo = null;
+    typeof config !== 'object' && (config = {});
+    let cv = new Canvas(document.createElement('canvas'));
+    cv.attr(config.attr)
+      .css(config.css)
+      [demoName](...args);
+    demo = cv.toDataURL(config.imageType || 'image/png', config.encoderOptions);
+    switch (config.type) {
+      case 'img':
+      case 'image':
+        let img = new Image();
+        img.src = demo;
+        demo = img;
+        break;
+      case 'canvas':
+        demo = cv.el;
+    }
+    return demo;
   }
 
-  bgDemo1(size, fillStyle, strokeStyle, other = 1.5) {
+  demo1(x, y, size, other, t, styleConfig, randomStyle) {
+    if (!this.el) return;
+
+    if (!Array.isArray(styleConfig)) {
+      styleConfig = typeof styleConfig === 'object' ? [styleConfig] : [];
+    }
+    styleConfig[0] = styleConfig[0] || (randomStyle ? {fillStyle: this.color(), strokeStyle: this.color()} : {});
+    styleConfig[1] = styleConfig[1] || (randomStyle ? {
+      fillStyle: this.color(),
+      strokeStyle: this.color()
+    } : styleConfig[0]);
+    styleConfig[2] = styleConfig[2] || (randomStyle ? {
+      fillStyle: this.color(),
+      strokeStyle: this.color()
+    } : styleConfig[1]);
+    styleConfig[3] = styleConfig[3] || (randomStyle ? {
+      fillStyle: this.color(),
+      strokeStyle: this.color()
+    } : styleConfig[2]);
+
+    styleConfig = styleConfig.slice(0, 4);
+
+    size /= 2;
+    let r = size * other;
+    styleConfig.map((e, k) => {
+      let type = e.fillStyle && e.strokeStyle ? ''
+        : e.fillStyle ? 'fill'
+          : e.strokeStyle ? 'stroke' : '';
+      type = t || type;
+      this.setStyle(e);
+      k === 0 && this.arcTo(size + x, y, size * 2 + x, size + y, r, type);
+      k === 1 && this.arcTo(size * 2 + x, size + y, size + x, size * 2 + y, r, type);
+      k === 2 && this.arcTo(size + x, size * 2 + y, x, size + y, r, type);
+      k === 3 && this.arcTo(x, size + y, size + x, y, r, type);
+    });
+    return this;
+  }
+
+  bgDemo1(size, other = 1.5, type, styleConfig, randomStyle) {
     if (!this.el) return;
     let {width, height} = this.el;
-    for (let i = 0; size * i < width; i++) {
-      for (let j = 0; size * j < height; j++) {
-        this.demo1(i * size, j * size, size, fillStyle, strokeStyle, other);
+    for (let i = 0; size * i <= width; i++) {
+      for (let j = 0; size * j <= height; j++) {
+        this.demo1(i * size, j * size, size, other, type, styleConfig, randomStyle);
       }
     }
     return this;

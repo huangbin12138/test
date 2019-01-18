@@ -49,19 +49,33 @@
     <script>
       'use strict';
       let random = new Random();
+      let app = new Html('#app');
+      // app.html(`<canvas class="cv">Your browser does not support the canvas element.</canvas>`.repeat(100));
       new Html('title').text(random.string(4, '一', '', false));
       let cv = new Canvas('.cv', {width: '400', height: '400'});
-      cv.css({border: '1px solid #d3d3d3'});
-      // cv.setStyle({fillStyle: 'pink', strokeStyle: '#f00'})
-      //   .arcTo(100, 0, 200, 100, 150, 'fill')
-      //   .setStyle({fillStyle: 'greenyellow', strokeStyle: '#000'})
-      //   .arcTo(200, 100, 100, 200, 150, 'fill')
-      //   .setStyle({fillStyle: 'yellowgreen', strokeStyle: '#0ff'})
-      //   .arcTo(100, 200, 0, 100, 150, 'fill')
-      //   .setStyle({fillStyle: 'hotpink', strokeStyle: '#f0f'})
-      //   .arcTo(0, 100, 100, 0, 150, 'fill')
-      // cv.demo1(0, 0, 100, 'pink', '', 1.5);
-      cv.bgDemo1(100, 'pink', '', 1.8);
+      let cv1 = new Canvas().newDemo('bgDemo1', {
+        attr: {width: 40, height: 40},
+        type: 'canvas',
+      }, [30, 3, '', [{fillStyle: 'hotpink', strokeStyle: 'pink'}]]);
+      console.log(cv1);
+      let i = 0;
+      let j = .1;
+      cv.setStyle({
+        font: 'italic 900 60px sans-serif',
+        shadowBlur: 8,
+        shadowColor: 'hotpink',
+        shadowOffsetX: 4,
+        shadowOffsetY: 4,
+        fillStyle: cv.colorStop('pattern', cv1, 'repeat'),
+        strokeStyle: 'pink',
+      }).font('hello', 100, 100, '')
+      /*setInterval(e => {
+        if (i >= 2 || i < 0) {
+          i = i < 0 ? 0 : 2;
+          j *= -1;
+        }
+        cv.clear().bgDemo1(400, (i += j).toFixed(1), 'stroke', [{fillStyle: 'hotpink', strokeStyle: 'pink'}], false);
+      }, 100);*/
     </script>
   </body>
 </html>
