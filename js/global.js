@@ -137,6 +137,14 @@ class Html {
     }
   }
 
+  darken(color, dark = 1, type = 'rgb') {
+    if (type === 'rgb') {
+      return `rgb(${r}, ${g}, ${b})`;
+    } else {
+      return '#' + ((r << 16) | (g << 8) | b).toString(16);
+    }
+  }
+
   html(value, isText = false) {
     if (value === undefined) {
       if (!this.el) return this;
@@ -498,6 +506,25 @@ class Canvas extends Html {
     return this;
   }
 
+  line(lineArr, isClose, type = 'stroke') {
+    this.ctxs.map(ctx => {
+      lineArr.map(one => {
+        one.map((e, k) => {
+          if (!k) {
+            ctx.moveTo(e, one[k + 1]);
+          } else {
+            if (!(k % 2)) {
+              ctx.lineTo(e, one[k + 1]);
+            }
+          }
+          isClose && ctx.closePath();
+        });
+      });
+      this.draw(ctx, type);
+    });
+    return this;
+  }
+
   arcTo(xx, xy, yx, yy, r, type) {
     this.ctxs.map(ctx => {
       ctx.beginPath();
@@ -510,7 +537,29 @@ class Canvas extends Html {
     return this;
   }
 
-  newDemo(demoName, config, args) {
+  fontStyle(obj) {
+    if (typeof obj === 'object') {
+      obj = Object.assign({
+        style: '',
+        variant: '',
+        weight: '',
+        size: '10px',
+        family: 'sans-serif',
+        caption: '',
+        icon: '',
+        menu: '',
+        messageBox: '',
+        smallCaption: '',
+        statusBar: '',
+      }, obj);
+    }
+    this.ctxs.map(ctx => {
+      ctx.font = typeof obj === 'object' ? Object.values(obj).join(' ') : obj;
+    });
+    return this;
+  }
+
+  static newDemo(demoName, config, args) {
     let demo = null;
     typeof config !== 'object' && (config = {});
     let cv = new Canvas(document.createElement('canvas'));
@@ -527,13 +576,14 @@ class Canvas extends Html {
         break;
       case 'canvas':
         demo = cv.el;
+        break;
+      case 'Html':
+        demo = cv;
     }
     return demo;
   }
 
   demo1(x, y, size, other, t, styleConfig, randomStyle) {
-    if (!this.el) return;
-
     if (!Array.isArray(styleConfig)) {
       styleConfig = typeof styleConfig === 'object' ? [styleConfig] : [];
     }
@@ -570,13 +620,81 @@ class Canvas extends Html {
   }
 
   bgDemo1(size, other = 1.5, type, styleConfig, randomStyle) {
-    if (!this.el) return;
-    let {width, height} = this.el;
+    let {width, height} = this.els[0];
     for (let i = 0; size * i <= width; i++) {
       for (let j = 0; size * j <= height; j++) {
         this.demo1(i * size, j * size, size, other, type, styleConfig, randomStyle);
       }
     }
     return this;
+  }
+
+  translate(x, y) {
+    this.ctxs.map(ctx => {
+      ctx.translate(x, y);
+    });
+    return this;
+  }
+
+  rotate(deg) {
+    this.ctxs.map(ctx => {
+      ctx.rotate(deg * Math.PI / 180);
+    });
+    return this;
+  }
+
+  scale(w, h) {
+    this.ctxs.map(ctx => {
+      ctx.scale(w, h);
+    });
+    return this;
+  }
+
+  transform(a, b, c, d, e, f) {
+    this.ctxs.map(ctx => {
+      ctx.transform(...arguments);
+    });
+    return this;
+  }
+
+  setTransform(a, b, c, d, e, f) {
+    this.ctxs.map(ctx => {
+      ctx.setTransform(...arguments);
+    });
+    return this;
+  }
+
+  makeClock(w, h, config = {}) {
+    config = Object.assign({
+      faceColor: '#fff',
+      circleColor: 'lightblue',
+      circleWidth: w / 20,
+      centerColor: '#aaa',
+      centerSize: w / 50,
+      fontSize: w / 20 + 'px',
+      fontColor: '#f0f',
+      scaleColor: '#333',
+      scaleWidth: w / w,
+      scaleHeight: w / w * 4,
+    }, config);
+    console.log(config);
+    this.attr({width: w, height: h || w})
+      .setStyle({fillStyle: config.faceColor, strokeStyle: config.circleColor, lineWidth: config.circleWidth})
+      .arc(w / 2, h / 2, (w - config.circleWidth) / 2, 0, 360)
+      .setStyle('fillStyle', config.centerColor)
+      .arc(w / 2, h / 2, config.centerSize, 0, 360, 'fill')
+      .setStyle({textAlign: 'center', textBaseline: 'top'})
+      .fontStyle({size: config.fontSize})
+      .translate(w / 2, h / 2);
+    for (let i = 0, j = 12; i <= 59; i++) {
+      let x = -config.scaleWidth / 2, height = config.scaleHeight;
+      if (!(i % 5)) {
+        x *= 2;
+        height *= 2;
+        this.setStyle('fillStyle', config.fontColor).font(j, 0, config.circleWidth - w / 2 + 1.3 * height);
+        j = j === 12 ? 1 : j + 1;
+      }
+      this.setStyle('fillStyle', config.scaleColor).rect(x, config.circleWidth + (-w + config.scaleHeight) / 2, -2 * x, height, 'fill').rotate(6);
+    }
   }
 }

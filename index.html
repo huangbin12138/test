@@ -41,41 +41,22 @@
       <!--C211 300 186 274 156 274"-->
       <!--style="fill: transparent;stroke: red;stroke-width: 3"></path>-->
       <!--</svg>-->
-
-      <canvas class="cv">Your browser does not support the canvas element.</canvas>
     </div>
 
     <script src="js/global.js"></script>
     <script>
       'use strict';
-      let random = new Random();
-      let app = new Html('#app');
-      // app.html(`<canvas class="cv">Your browser does not support the canvas element.</canvas>`.repeat(100));
-      new Html('title').text(random.string(4, '一', '', false));
-      let cv = new Canvas('.cv', {width: '400', height: '400'});
-      let cv1 = new Canvas().newDemo('bgDemo1', {
-        attr: {width: 40, height: 40},
-        type: 'canvas',
-      }, [30, 3, '', [{fillStyle: 'hotpink', strokeStyle: 'pink'}]]);
-      console.log(cv1);
-      let i = 0;
-      let j = .1;
-      cv.setStyle({
-        font: 'italic 900 60px sans-serif',
-        shadowBlur: 8,
-        shadowColor: 'hotpink',
-        shadowOffsetX: 4,
-        shadowOffsetY: 4,
-        fillStyle: cv.colorStop('pattern', cv1, 'repeat'),
-        strokeStyle: 'pink',
-      }).font('hello', 100, 100, '')
-      /*setInterval(e => {
-        if (i >= 2 || i < 0) {
-          i = i < 0 ? 0 : 2;
-          j *= -1;
-        }
-        cv.clear().bgDemo1(400, (i += j).toFixed(1), 'stroke', [{fillStyle: 'hotpink', strokeStyle: 'pink'}], false);
-      }, 100);*/
+      let app = new Html('#app').css('text-align', 'center');
+      new Html('title').text(app.string(4, '一', '', false));
+      app.html(`<canvas class="cv">Your browser does not support the canvas element.</canvas>`);
+      let cv = new Canvas('.cv', {width: '300', height: '300'});
+      cv.css({padding: 0, border: '1px solid #d3d3d3'});
+
+
+      /* clock */
+      cv.makeClock(300, 300);
+
+
     </script>
   </body>
 </html>
