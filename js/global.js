@@ -1,66 +1,5 @@
 'use strict';
 
-class Random {
-
-  number(max = 1, min = 0, fixed = 0) {
-    max < min && (max = [min, min = max][0]);
-    return (Math.random() * (max - min) + min).toFixed(fixed);
-  }
-
-  string(len, type, otherStr, canRepeat = true) {
-    typeof type !== 'string' && (type = 'a');
-    if (typeof otherStr === 'string') {
-      otherStr = otherStr.split('');
-    } else if (Array.isArray(otherStr)) {
-      otherStr = otherStr.filter(e => e && typeof e === 'string');
-    } else {
-      otherStr = [];
-    }
-    isNaN(len) && (len = 1);
-    let str = [];
-    let reg = {
-      '[a-z]': [97, 122], // a-z
-      '[A-Z]': [65, 90], // A-Z
-      '[0-9]': [48, 57], // 0-9
-      '[\u4e00-\u9fa5]': [19968, 40869], // 汉字
-    };
-    let regs = Object.keys(reg)
-      .filter(k => new RegExp(k).test(type))
-      .map(e => reg[e]);
-    regs.push(...otherStr);
-    for (let l = regs.length; len > 0 && l; len--) {
-      let m = this.number(l - 1, 0) | 0;
-      let s = regs[m];
-      let n = this.number(s[1], s[0]) | 0;
-      if (!canRepeat && (str.includes(s) || str.includes(String.fromCharCode(n)))) {
-        len++;
-        if (typeof s === 'string') {
-          regs.splice(m, 1);
-          l--;
-        }
-        continue;
-      }
-      str.push(typeof s === 'string' ? s : String.fromCharCode(n));
-    }
-    return str.filter(e => e).join('');
-  }
-
-  color(min = 0, max = 255, type = 'rgb') {
-    min > max && (min = [max, max = min][0]);
-    min = min < 0 ? 0 : min;
-    max = max > 255 ? 255 : max;
-    let r = this.number(max, min) | 0;
-    let g = this.number(max, min) | 0;
-    let b = this.number(max, min) | 0;
-    if (type === 'rgb') {
-      return `rgb(${r}, ${g}, ${b})`;
-    } else {
-      return '#' + ((r << 16) | (g << 8) | b).toString(16);
-    }
-  }
-
-}
-
 class Html {
 
   constructor(query, id) {
@@ -74,75 +13,6 @@ class Html {
     this.length = this.els.length;
     this.el = this.length === 1 ? this.els[0] : null;
     this.attr(this.id, '');
-  }
-
-  isDom(element) {
-    return element && typeof element === 'object' && element.nodeType === 1 && typeof element.nodeName === 'string';
-  }
-
-  number(max = 1, min = 0, fixed = 0) {
-    max < min && (max = [min, min = max][0]);
-    return (Math.random() * (max - min) + min).toFixed(fixed);
-  }
-
-  string(len, type, otherStr, canRepeat = true) {
-    typeof type !== 'string' && (type = 'a');
-    if (typeof otherStr === 'string') {
-      otherStr = otherStr.split('');
-    } else if (Array.isArray(otherStr)) {
-      otherStr = otherStr.filter(e => e && typeof e === 'string');
-    } else {
-      otherStr = [];
-    }
-    isNaN(len) && (len = 1);
-    let str = [];
-    let reg = {
-      '[a-z]': [97, 122], // a-z
-      '[A-Z]': [65, 90], // A-Z
-      '[0-9]': [48, 57], // 0-9
-      '[\u4e00-\u9fa5]': [19968, 40869], // 汉字
-    };
-    let regs = Object.keys(reg)
-      .filter(k => new RegExp(k).test(type))
-      .map(e => reg[e]);
-    regs.push(...otherStr);
-    for (let l = regs.length; len > 0 && l; len--) {
-      let m = this.number(l - 1, 0) | 0;
-      let s = regs[m];
-      let n = this.number(s[1], s[0]) | 0;
-      if (!canRepeat && (str.includes(s) || str.includes(String.fromCharCode(n)))) {
-        len++;
-        if (typeof s === 'string') {
-          regs.splice(m, 1);
-          l--;
-        }
-        continue;
-      }
-      str.push(typeof s === 'string' ? s : String.fromCharCode(n));
-    }
-    return str.filter(e => e).join('');
-  }
-
-  color(min = 0, max = 255, type = 'rgb') {
-    min > max && (min = [max, max = min][0]);
-    min = min < 0 ? 0 : min;
-    max = max > 255 ? 255 : max;
-    let r = this.number(max, min) | 0;
-    let g = this.number(max, min) | 0;
-    let b = this.number(max, min) | 0;
-    if (type === 'rgb') {
-      return `rgb(${r}, ${g}, ${b})`;
-    } else {
-      return '#' + ((r << 16) | (g << 8) | b).toString(16);
-    }
-  }
-
-  darken(color, dark = 1, type = 'rgb') {
-    if (type === 'rgb') {
-      return `rgb(${r}, ${g}, ${b})`;
-    } else {
-      return '#' + ((r << 16) | (g << 8) | b).toString(16);
-    }
   }
 
   html(value, isText = false) {
@@ -488,10 +358,20 @@ class Canvas extends Html {
     return this;
   }
 
-  rect(x, y, w, h, type) {
+  rect(x, y, w, h, r, type) {
+    let min = w > h ? h : w;
     this.ctxs.map(ctx => {
       ctx.beginPath();
-      ctx.rect(x, y, w, h);
+      if (!r) {
+        ctx.rect(x, y, w, h)
+      } else {
+        r > min / 2 && (r = min / 2);
+        ctx.moveTo(x + r, y);
+        ctx.arcTo(x + w, y, x + w, y + h / 2, r);
+        ctx.arcTo(x + w, y + h, x + w / 2, y + h, r);
+        ctx.arcTo(x, y + h, x, y + h / 2, r);
+        ctx.arcTo(x, y, x + w / 2, y, r);
+      }
       this.draw(ctx, type);
     });
     return this;
@@ -511,14 +391,15 @@ class Canvas extends Html {
       lineArr.map(one => {
         one.map((e, k) => {
           if (!k) {
+            ctx.beginPath();
             ctx.moveTo(e, one[k + 1]);
           } else {
             if (!(k % 2)) {
               ctx.lineTo(e, one[k + 1]);
             }
           }
-          isClose && ctx.closePath();
         });
+        isClose && ctx.closePath();
       });
       this.draw(ctx, type);
     });
@@ -560,13 +441,17 @@ class Canvas extends Html {
   }
 
   static newDemo(demoName, config, args) {
-    let demo = null;
     typeof config !== 'object' && (config = {});
+    config = Object.assign({
+      type: 'canvas',
+      imageType: 'image/png',
+      encoderOptions: undefined
+    }, config);
     let cv = new Canvas(document.createElement('canvas'));
     cv.attr(config.attr)
       .css(config.css)
       [demoName](...args);
-    demo = cv.toDataURL(config.imageType || 'image/png', config.encoderOptions);
+    let demo = cv.toDataURL(config.imageType, config.encoderOptions);
     switch (config.type) {
       case 'img':
       case 'image':
@@ -664,18 +549,32 @@ class Canvas extends Html {
     return this;
   }
 
+  save() {
+    this.ctxs.map(ctx => ctx.save());
+    return this;
+  }
+
+  restore() {
+    this.ctxs.map(ctx => ctx.restore());
+    return this;
+  }
+
   makeClock(w, h, config = {}) {
+    let cc = config.circleColor || 'lightblue';
+    config.circleColor = cc;
     config = Object.assign({
-      faceColor: '#fff',
-      circleColor: 'lightblue',
       circleWidth: w / 20,
-      centerColor: '#aaa',
+      faceColor: this.changeColor(cc, .1),
+      centerColor: this.changeColor(cc, -.3),
       centerSize: w / 50,
       fontSize: w / 20 + 'px',
-      fontColor: '#f0f',
-      scaleColor: '#333',
-      scaleWidth: w / w,
-      scaleHeight: w / w * 4,
+      fontColor: this.changeColor(cc, -.8),
+      scaleColor: this.changeColor(cc, -.5),
+      scaleWidth: 1,
+      scaleHeight: 4,
+      hColor: this.changeColor(cc, -.6),
+      mColor: this.changeColor(cc, -.3),
+      sColor: cc
     }, config);
     console.log(config);
     this.attr({width: w, height: h || w})
@@ -685,16 +584,49 @@ class Canvas extends Html {
       .arc(w / 2, h / 2, config.centerSize, 0, 360, 'fill')
       .setStyle({textAlign: 'center', textBaseline: 'top'})
       .fontStyle({size: config.fontSize})
+      .save()
       .translate(w / 2, h / 2);
-    for (let i = 0, j = 12; i <= 59; i++) {
+    for (let i = 0, j = 0; i <= 59; i++) {
       let x = -config.scaleWidth / 2, height = config.scaleHeight;
       if (!(i % 5)) {
         x *= 2;
         height *= 2;
-        this.setStyle('fillStyle', config.fontColor).font(j, 0, config.circleWidth - w / 2 + 1.3 * height);
-        j = j === 12 ? 1 : j + 1;
+        this.setStyle('fillStyle', config.fontColor).font(j++ % 12 || 12, 0, config.circleWidth - w / 2 + 2 * height);
       }
-      this.setStyle('fillStyle', config.scaleColor).rect(x, config.circleWidth + (-w + config.scaleHeight) / 2, -2 * x, height, 'fill').rotate(6);
+      this.setStyle('fillStyle', config.scaleColor).rect(x, config.circleWidth + (-w + config.scaleHeight) / 2, -2 * x, height, 0, 'fill').rotate(6);
     }
+    let img = new Image();
+    img.src = this.el.toDataURL();
+    img.onload = run.bind(this);
+
+    function run() {
+      this.restore().clear()
+        .setStyle('fillStyle', this.colorStop('pattern', img, 'no-repeat'))
+        .rect(0, 0, w, h, 0, 'fill')
+        .save()
+        .translate(w / 2, h / 2);
+      let currTime = new Date();
+      let [H, m, S, s] = this.formatDate(currTime, 'h,m,S,s').split(',').map(e => e * 1);
+      S += s / 1000;
+      m = (m * 60 + S) / 60;
+      H = (H * 60 ** 2 + m * 60) / 60 ** 2;
+      S *= 6;
+      m *= 6;
+      H *= 30;
+      this.setStyle('lineWidth', 1)
+        .rotate(H)
+        .setStyle('fillStyle', config.hColor)
+        .line([[-config.centerSize / 2, 0, config.centerSize / 2, 0, 0, -w / 4]], true, 'fill')
+        .rotate(-H)
+        .rotate(m)
+        .setStyle('fillStyle', config.mColor)
+        .line([[-config.centerSize / 3, 0, config.centerSize / 3, 0, 0, -w / 3]], false, 'fill')
+        .rotate(-m)
+        .rotate(S)
+        .setStyle('fillStyle', config.sColor)
+        .line([[-config.centerSize / 4, 0, config.centerSize / 4, 0, 0, -w / 2]], false, 'fill')
+      setTimeout(run.bind(this), 100);
+    }
+
   }
 }

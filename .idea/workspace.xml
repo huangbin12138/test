@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f2b45283-22f1-40a4-8f4f-ecd2e6f40f36" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/cv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/tools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/global.js" afterDir="false" />
     </list>
@@ -16,14 +20,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48071626">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="440">
-                  <caret line="56" column="25" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+                <state relative-caret-position="300">
+                  <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
@@ -32,19 +36,13 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="global.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="global.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/global.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="154">
-                  <caret line="663" selection-start-line="663" selection-end-line="663" />
+                <state relative-caret-position="4224">
+                  <caret line="414" column="25" selection-start-line="411" selection-start-column="6" selection-end-line="414" selection-end-column="25" />
                   <folding>
-                    <element signature="n#!!block;n#number#0;n#Random#0" />
-                    <element signature="n#!!block;n#string#0;n#Random#0" />
-                    <element signature="n#!!block;n#color#0;n#Random#0" />
-                    <element signature="n#!!block;n#isDom#0;n#Html#0" />
-                    <element signature="n#!!block;n#number#0;n#Html#0" />
-                    <element signature="n#!!block;n#string#0;n#Html#0" />
-                    <element signature="n#!!block;n#color#0;n#Html#0" />
+                    <element signature="n#!!block;n#constructor#0;n#Html#0" />
                     <element signature="n#!!block;n#html#0;n#Html#0" />
                     <element signature="n#!!block;n#text#0;n#Html#0" />
                     <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -52,6 +50,7 @@
                     <element signature="n#!!block;n#removeClass#0;n#Html#0" />
                     <element signature="n#!!block;n#attr#0;n#Html#0" />
                     <element signature="n#!!block;n#prop#0;n#Html#0" />
+                    <element signature="n#!!block;n#find#0;n#Html#0" />
                     <element signature="n#!!block;n#child#0;n#Html#0" />
                     <element signature="n#!!block;n#sibling#0;n#Html#0" />
                     <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -63,6 +62,24 @@
                     <element signature="n#!!block;n#off#0;n#Html#0" />
                     <element signature="n#Flash#0" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="tools.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/tools.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="616">
+                  <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="cv.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/js/cv.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="56">
+                  <caret line="124" column="19" selection-start-line="124" selection-start-column="19" selection-end-line="124" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
@@ -88,7 +105,26 @@
       <find>randomColor</find>
       <find>cxt</find>
       <find>random.</find>
+      <find>color2rgb</find>
+      <find>colorChange</find>
+      <find>((r &lt;&lt; 16) | (g &lt;&lt; 8) | b).toString(16)</find>
+      <find>lightb</find>
+      <find>rect(</find>
+      <find>config.circleColor</find>
+      <find>cc</find>
+      <find>newD</find>
+      <find>this</find>
+      <find>number</find>
+      <find>string</find>
+      <find>color</find>
+      <find>this.ctx.beginPath()</find>
       <find>Math.PI</find>
+      <find>Math.</find>
+      <find>clear</find>
+      <find>artTo</find>
+      <find>restore</find>
+      <find>draw</find>
+      <find>drawType</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -98,8 +134,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/gif.js" />
+        <option value="$PROJECT_DIR$/js/gif.js.map" />
+        <option value="$PROJECT_DIR$/js/CV.js" />
+        <option value="$PROJECT_DIR$/cv.html" />
+        <option value="$PROJECT_DIR$/other/index.html" />
         <option value="$PROJECT_DIR$/js/global.js" />
+        <option value="$PROJECT_DIR$/js/tools.js" />
+        <option value="$PROJECT_DIR$/js/111.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/cv.js" />
       </list>
     </option>
   </component>
@@ -151,6 +195,15 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\huangb\dist\other" />
+      <recent name="D:\huangb\dist" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\huangb\dist\js" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -186,33 +239,40 @@
       <workItem from="1547773204511" duration="23685000" />
       <workItem from="1547859784308" duration="6899000" />
       <workItem from="1547878789975" duration="12419000" />
+      <workItem from="1548032866445" duration="27133000" />
+      <workItem from="1548119014269" duration="8421000" />
+      <workItem from="1548205478169" duration="23325000" />
+      <workItem from="1548292645290" duration="1985000" />
+      <workItem from="1548379674038" duration="405000" />
+      <workItem from="1548380683604" duration="23645000" />
+      <workItem from="1548464377843" duration="22243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200269000" />
+    <option name="totallyTimeSpent" value="307426000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="884" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07984791" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.07984791" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.21715818" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +287,121 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/gif.js" />
+    <entry file="file://$PROJECT_DIR$/js/gif.js.map" />
+    <entry file="file://$PROJECT_DIR$/js/global.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="676" column="14" selection-start-line="676" selection-start-column="14" selection-end-line="676" selection-end-column="14" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
+            <element signature="n#!!block;n#html#0;n#Html#0" />
+            <element signature="n#!!block;n#text#0;n#Html#0" />
+            <element signature="n#!!block;n#css#0;n#Html#0" />
+            <element signature="n#!!block;n#addClass#0;n#Html#0" />
+            <element signature="n#!!block;n#removeClass#0;n#Html#0" />
+            <element signature="n#!!block;n#attr#0;n#Html#0" />
+            <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
+            <element signature="n#!!block;n#child#0;n#Html#0" />
+            <element signature="n#!!block;n#sibling#0;n#Html#0" />
+            <element signature="n#!!block;n#siblings#0;n#Html#0" />
+            <element signature="n#!!block;n#siblingsItem#0;n#Html#0" />
+            <element signature="n#!!block;n#parent#0;n#Html#0" />
+            <element signature="n#!!block;n#addChild#0;n#Html#0" />
+            <element signature="n#!!block;n#remove#0;n#Html#0" />
+            <element signature="n#!!block;n#on#0;n#Html#0" />
+            <element signature="n#!!block;n#off#0;n#Html#0" />
+            <element signature="n#Flash#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cv.html" />
+    <entry file="file://$PROJECT_DIR$/js/cv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="509" selection-start-column="509" selection-end-column="509" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1232">
+          <caret line="56" column="14" lean-forward="true" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/global.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9592">
+          <caret line="726" selection-start-line="726" selection-end-line="726" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
+            <element signature="n#!!block;n#html#0;n#Html#0" />
+            <element signature="n#!!block;n#text#0;n#Html#0" />
+            <element signature="n#!!block;n#css#0;n#Html#0" />
+            <element signature="n#!!block;n#addClass#0;n#Html#0" />
+            <element signature="n#!!block;n#removeClass#0;n#Html#0" />
+            <element signature="n#!!block;n#attr#0;n#Html#0" />
+            <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
+            <element signature="n#!!block;n#child#0;n#Html#0" />
+            <element signature="n#!!block;n#sibling#0;n#Html#0" />
+            <element signature="n#!!block;n#siblings#0;n#Html#0" />
+            <element signature="n#!!block;n#siblingsItem#0;n#Html#0" />
+            <element signature="n#!!block;n#parent#0;n#Html#0" />
+            <element signature="n#!!block;n#addChild#0;n#Html#0" />
+            <element signature="n#!!block;n#remove#0;n#Html#0" />
+            <element signature="n#!!block;n#on#0;n#Html#0" />
+            <element signature="n#!!block;n#off#0;n#Html#0" />
+            <element signature="n#Flash#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1232">
+          <caret line="56" column="25" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/global.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7986">
+          <caret line="663" selection-start-line="663" selection-end-line="663" />
+          <folding>
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
+            <element signature="n#!!block;n#html#0;n#Html#0" />
+            <element signature="n#!!block;n#text#0;n#Html#0" />
+            <element signature="n#!!block;n#css#0;n#Html#0" />
+            <element signature="n#!!block;n#addClass#0;n#Html#0" />
+            <element signature="n#!!block;n#removeClass#0;n#Html#0" />
+            <element signature="n#!!block;n#attr#0;n#Html#0" />
+            <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
+            <element signature="n#!!block;n#child#0;n#Html#0" />
+            <element signature="n#!!block;n#sibling#0;n#Html#0" />
+            <element signature="n#!!block;n#siblings#0;n#Html#0" />
+            <element signature="n#!!block;n#siblingsItem#0;n#Html#0" />
+            <element signature="n#!!block;n#parent#0;n#Html#0" />
+            <element signature="n#!!block;n#addChild#0;n#Html#0" />
+            <element signature="n#!!block;n#remove#0;n#Html#0" />
+            <element signature="n#!!block;n#on#0;n#Html#0" />
+            <element signature="n#!!block;n#off#0;n#Html#0" />
+            <element signature="n#Flash#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1232">
@@ -239,13 +414,7 @@
         <state relative-caret-position="6710">
           <caret line="605" selection-start-line="605" selection-end-line="605" />
           <folding>
-            <element signature="n#!!block;n#number#0;n#Random#0" />
-            <element signature="n#!!block;n#string#0;n#Random#0" />
-            <element signature="n#!!block;n#color#0;n#Random#0" />
-            <element signature="n#!!block;n#isDom#0;n#Html#0" />
-            <element signature="n#!!block;n#number#0;n#Html#0" />
-            <element signature="n#!!block;n#string#0;n#Html#0" />
-            <element signature="n#!!block;n#color#0;n#Html#0" />
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
             <element signature="n#!!block;n#html#0;n#Html#0" />
             <element signature="n#!!block;n#text#0;n#Html#0" />
             <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -253,6 +422,7 @@
             <element signature="n#!!block;n#removeClass#0;n#Html#0" />
             <element signature="n#!!block;n#attr#0;n#Html#0" />
             <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
             <element signature="n#!!block;n#child#0;n#Html#0" />
             <element signature="n#!!block;n#sibling#0;n#Html#0" />
             <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -279,13 +449,7 @@
         <state relative-caret-position="4686">
           <caret line="524" column="23" lean-forward="true" selection-start-line="524" selection-start-column="23" selection-end-line="524" selection-end-column="23" />
           <folding>
-            <element signature="n#!!block;n#number#0;n#Random#0" />
-            <element signature="n#!!block;n#string#0;n#Random#0" />
-            <element signature="n#!!block;n#color#0;n#Random#0" />
-            <element signature="n#!!block;n#isDom#0;n#Html#0" />
-            <element signature="n#!!block;n#number#0;n#Html#0" />
-            <element signature="n#!!block;n#string#0;n#Html#0" />
-            <element signature="n#!!block;n#color#0;n#Html#0" />
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
             <element signature="n#!!block;n#html#0;n#Html#0" />
             <element signature="n#!!block;n#text#0;n#Html#0" />
             <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -293,6 +457,7 @@
             <element signature="n#!!block;n#removeClass#0;n#Html#0" />
             <element signature="n#!!block;n#attr#0;n#Html#0" />
             <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
             <element signature="n#!!block;n#child#0;n#Html#0" />
             <element signature="n#!!block;n#sibling#0;n#Html#0" />
             <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -319,13 +484,7 @@
         <state relative-caret-position="10164">
           <caret line="462" column="14" lean-forward="true" selection-start-line="462" selection-start-column="14" selection-end-line="462" selection-end-column="14" />
           <folding>
-            <element signature="n#!!block;n#number#0;n#Random#0" />
-            <element signature="n#!!block;n#string#0;n#Random#0" />
-            <element signature="n#!!block;n#color#0;n#Random#0" />
-            <element signature="n#!!block;n#isDom#0;n#Html#0" />
-            <element signature="n#!!block;n#number#0;n#Html#0" />
-            <element signature="n#!!block;n#string#0;n#Html#0" />
-            <element signature="n#!!block;n#color#0;n#Html#0" />
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
             <element signature="n#!!block;n#html#0;n#Html#0" />
             <element signature="n#!!block;n#text#0;n#Html#0" />
             <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -333,6 +492,7 @@
             <element signature="n#!!block;n#removeClass#0;n#Html#0" />
             <element signature="n#!!block;n#attr#0;n#Html#0" />
             <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
             <element signature="n#!!block;n#child#0;n#Html#0" />
             <element signature="n#!!block;n#sibling#0;n#Html#0" />
             <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -359,13 +519,7 @@
         <state relative-caret-position="8690">
           <caret line="395" column="31" lean-forward="true" selection-start-line="395" selection-start-column="31" selection-end-line="395" selection-end-column="31" />
           <folding>
-            <element signature="n#!!block;n#number#0;n#Random#0" />
-            <element signature="n#!!block;n#string#0;n#Random#0" />
-            <element signature="n#!!block;n#color#0;n#Random#0" />
-            <element signature="n#!!block;n#isDom#0;n#Html#0" />
-            <element signature="n#!!block;n#number#0;n#Html#0" />
-            <element signature="n#!!block;n#string#0;n#Html#0" />
-            <element signature="n#!!block;n#color#0;n#Html#0" />
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
             <element signature="n#!!block;n#html#0;n#Html#0" />
             <element signature="n#!!block;n#text#0;n#Html#0" />
             <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -373,6 +527,7 @@
             <element signature="n#!!block;n#removeClass#0;n#Html#0" />
             <element signature="n#!!block;n#attr#0;n#Html#0" />
             <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
             <element signature="n#!!block;n#child#0;n#Html#0" />
             <element signature="n#!!block;n#sibling#0;n#Html#0" />
             <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -399,13 +554,7 @@
         <state relative-caret-position="352">
           <caret line="79" column="3" lean-forward="true" selection-start-line="79" selection-start-column="3" selection-end-line="79" selection-end-column="3" />
           <folding>
-            <element signature="n#!!block;n#number#0;n#Random#0" />
-            <element signature="n#!!block;n#string#0;n#Random#0" />
-            <element signature="n#!!block;n#color#0;n#Random#0" />
-            <element signature="n#!!block;n#isDom#0;n#Html#0" />
-            <element signature="n#!!block;n#number#0;n#Html#0" />
-            <element signature="n#!!block;n#string#0;n#Html#0" />
-            <element signature="n#!!block;n#color#0;n#Html#0" />
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
             <element signature="n#!!block;n#html#0;n#Html#0" />
             <element signature="n#!!block;n#text#0;n#Html#0" />
             <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -413,6 +562,7 @@
             <element signature="n#!!block;n#removeClass#0;n#Html#0" />
             <element signature="n#!!block;n#attr#0;n#Html#0" />
             <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
             <element signature="n#!!block;n#child#0;n#Html#0" />
             <element signature="n#!!block;n#sibling#0;n#Html#0" />
             <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -439,13 +589,7 @@
         <state relative-caret-position="704">
           <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
           <folding>
-            <element signature="n#!!block;n#number#0;n#Random#0" />
-            <element signature="n#!!block;n#string#0;n#Random#0" />
-            <element signature="n#!!block;n#color#0;n#Random#0" />
-            <element signature="n#!!block;n#isDom#0;n#Html#0" />
-            <element signature="n#!!block;n#number#0;n#Html#0" />
-            <element signature="n#!!block;n#string#0;n#Html#0" />
-            <element signature="n#!!block;n#color#0;n#Html#0" />
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
             <element signature="n#!!block;n#html#0;n#Html#0" />
             <element signature="n#!!block;n#text#0;n#Html#0" />
             <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -453,6 +597,7 @@
             <element signature="n#!!block;n#removeClass#0;n#Html#0" />
             <element signature="n#!!block;n#attr#0;n#Html#0" />
             <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
             <element signature="n#!!block;n#child#0;n#Html#0" />
             <element signature="n#!!block;n#sibling#0;n#Html#0" />
             <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -479,13 +624,7 @@
         <state relative-caret-position="5104">
           <caret line="274" column="3" lean-forward="true" selection-start-line="274" selection-start-column="3" selection-end-line="274" selection-end-column="3" />
           <folding>
-            <element signature="n#!!block;n#number#0;n#Random#0" />
-            <element signature="n#!!block;n#string#0;n#Random#0" />
-            <element signature="n#!!block;n#color#0;n#Random#0" />
-            <element signature="n#!!block;n#isDom#0;n#Html#0" />
-            <element signature="n#!!block;n#number#0;n#Html#0" />
-            <element signature="n#!!block;n#string#0;n#Html#0" />
-            <element signature="n#!!block;n#color#0;n#Html#0" />
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
             <element signature="n#!!block;n#html#0;n#Html#0" />
             <element signature="n#!!block;n#text#0;n#Html#0" />
             <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -493,6 +632,7 @@
             <element signature="n#!!block;n#removeClass#0;n#Html#0" />
             <element signature="n#!!block;n#attr#0;n#Html#0" />
             <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
             <element signature="n#!!block;n#child#0;n#Html#0" />
             <element signature="n#!!block;n#sibling#0;n#Html#0" />
             <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -519,13 +659,7 @@
         <state relative-caret-position="6050">
           <caret line="275" column="4" lean-forward="true" selection-start-line="275" selection-start-column="4" selection-end-line="275" selection-end-column="4" />
           <folding>
-            <element signature="n#!!block;n#number#0;n#Random#0" />
-            <element signature="n#!!block;n#string#0;n#Random#0" />
-            <element signature="n#!!block;n#color#0;n#Random#0" />
-            <element signature="n#!!block;n#isDom#0;n#Html#0" />
-            <element signature="n#!!block;n#number#0;n#Html#0" />
-            <element signature="n#!!block;n#string#0;n#Html#0" />
-            <element signature="n#!!block;n#color#0;n#Html#0" />
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
             <element signature="n#!!block;n#html#0;n#Html#0" />
             <element signature="n#!!block;n#text#0;n#Html#0" />
             <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -533,6 +667,7 @@
             <element signature="n#!!block;n#removeClass#0;n#Html#0" />
             <element signature="n#!!block;n#attr#0;n#Html#0" />
             <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
             <element signature="n#!!block;n#child#0;n#Html#0" />
             <element signature="n#!!block;n#sibling#0;n#Html#0" />
             <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -559,13 +694,7 @@
         <state relative-caret-position="792">
           <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding>
-            <element signature="n#!!block;n#number#0;n#Random#0" />
-            <element signature="n#!!block;n#string#0;n#Random#0" />
-            <element signature="n#!!block;n#color#0;n#Random#0" />
-            <element signature="n#!!block;n#isDom#0;n#Html#0" />
-            <element signature="n#!!block;n#number#0;n#Html#0" />
-            <element signature="n#!!block;n#string#0;n#Html#0" />
-            <element signature="n#!!block;n#color#0;n#Html#0" />
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
             <element signature="n#!!block;n#html#0;n#Html#0" />
             <element signature="n#!!block;n#text#0;n#Html#0" />
             <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -573,6 +702,7 @@
             <element signature="n#!!block;n#removeClass#0;n#Html#0" />
             <element signature="n#!!block;n#attr#0;n#Html#0" />
             <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
             <element signature="n#!!block;n#child#0;n#Html#0" />
             <element signature="n#!!block;n#sibling#0;n#Html#0" />
             <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -657,25 +787,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/favicon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/xpath.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="56" column="25" selection-start-line="56" selection-start-column="25" selection-end-line="56" selection-end-column="25" />
+        <state relative-caret-position="704">
+          <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/gif.js" />
+    <entry file="file://$PROJECT_DIR$/js/gif.js.map" />
+    <entry file="file://$PROJECT_DIR$/cv.html" />
+    <entry file="file://$PROJECT_DIR$/other/js/index.js" />
+    <entry file="file://$PROJECT_DIR$/other/index.html" />
     <entry file="file://$PROJECT_DIR$/js/global.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="663" selection-start-line="663" selection-end-line="663" />
+        <state relative-caret-position="4224">
+          <caret line="414" column="25" selection-start-line="411" selection-start-column="6" selection-end-line="414" selection-end-column="25" />
           <folding>
-            <element signature="n#!!block;n#number#0;n#Random#0" />
-            <element signature="n#!!block;n#string#0;n#Random#0" />
-            <element signature="n#!!block;n#color#0;n#Random#0" />
-            <element signature="n#!!block;n#isDom#0;n#Html#0" />
-            <element signature="n#!!block;n#number#0;n#Html#0" />
-            <element signature="n#!!block;n#string#0;n#Html#0" />
-            <element signature="n#!!block;n#color#0;n#Html#0" />
+            <element signature="n#!!block;n#constructor#0;n#Html#0" />
             <element signature="n#!!block;n#html#0;n#Html#0" />
             <element signature="n#!!block;n#text#0;n#Html#0" />
             <element signature="n#!!block;n#css#0;n#Html#0" />
@@ -683,6 +815,7 @@
             <element signature="n#!!block;n#removeClass#0;n#Html#0" />
             <element signature="n#!!block;n#attr#0;n#Html#0" />
             <element signature="n#!!block;n#prop#0;n#Html#0" />
+            <element signature="n#!!block;n#find#0;n#Html#0" />
             <element signature="n#!!block;n#child#0;n#Html#0" />
             <element signature="n#!!block;n#sibling#0;n#Html#0" />
             <element signature="n#!!block;n#siblings#0;n#Html#0" />
@@ -694,6 +827,41 @@
             <element signature="n#!!block;n#off#0;n#Html#0" />
             <element signature="n#Flash#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="2791" column="4" selection-start-line="2791" selection-start-column="4" selection-end-line="2791" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/111.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="178" column="7" lean-forward="true" selection-start-line="178" selection-start-column="7" selection-end-line="178" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/tools.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="124" column="19" selection-start-line="124" selection-start-column="19" selection-end-line="124" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
         </state>
       </provider>
     </entry>
