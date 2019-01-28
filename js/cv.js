@@ -4,6 +4,7 @@ class CV {
   constructor(config) {
     typeof config === 'string' && (config = {el: config});
     let {el, width, height, context} = config;
+    let that = this;
     this.canvas = document.querySelector(el);
     this.canvas.width = width || this.canvas.width;
     this.canvas.height = height || this.canvas.height;
@@ -23,7 +24,66 @@ class CV {
             return 0;
         }
       },
+      point2line(x, y, lineObj) {
+        let {a, b, c} = lineObj;
+        let d = (a * x + b * y + c) / (a ** 2 + b ** 2) ** .5;
+        return d < 0 ? d * -1 : d;
+      },
+      line2line(line1, line2) {
+        if (!line1.a && !line2.a) return ((line2.c / line2.b - line1.c / line1.b) ** 2) ** .5;
+        if (!line1.b && !line2.b) return ((line2.c / line2.a - line1.c / line1.a) ** 2) ** .5;
+        if (line1.a / line1.b !== line2.a / line2.b) return 0;
+        let [x, y] = that.geometry.getPoint2line(line1);
+        return this.point2line(x, y, line2);
+      }
     };
+    this.geometry = {
+      line(type = 'abc', ...arg) {
+        let A, B, C;
+        let [a, b, c, d] = arg.map(e => e * 1);
+        switch (type) {
+          case 'kb': // 斜截式
+            A = a;
+            B = -1;
+            C = b;
+            break;
+          case 'kxy': // 点斜式
+            A = a;
+            B = -1;
+            C = c - a * b;
+            break;
+          case 'xyxy': // 两点式
+            if (!(c - a) || !(d - b)) return false;
+            A = (d - b) / (c - a);
+            B = -1;
+            C = (b - d) * a / (c - a) + c;
+            break;
+          case 'ab': // 截距式
+            if (!a || !b) return false;
+            A = 1 / a;
+            B = 1 / b;
+            C = -1;
+            break;
+          default: // 一般式
+            A = a;
+            B = b;
+            C = c;
+        }
+        type = 'ax+by+c=0';
+        if (!(A ** 2 + B ** 2)) return false;
+        return {a: A, b: B, c: C, type};
+      },
+      getPoint2line(line, numType, num = 0) {
+        // ax + by + c = 0 ; x = (-c -by) / a; y = (-c -ax) / b;
+        // 计算机坐标系y轴与数学坐标系y轴方向相反！
+        let {a, b, c} = line;
+        if (numType === 'y') {
+          return [-(c + b * num) / a, num * -1]; // -y
+        } else {
+          return [num, -(c + a * num) / b * -1]; // -y
+        }
+      }
+    }
   }
 
   emit(funName, ...arg) {

@@ -38,33 +38,25 @@
       title.textContent = tools.rString(4, '一');
 
       let cv = new CV({el: '.cv', width: 550, height: 400});
+      let line1 = cv.geometry.line('kb', .5, 0);
+      let line2 = cv.geometry.line('kxy', -.5, 0, 100);
+      let line3 = cv.geometry.line('xyxy', 0, 60, 30, 0);
+      let line4 = cv.geometry.line('ab', -50, -75);
+      let line5 = cv.geometry.line('', 1, 1, 50);
 
-      cv.setStyle({strokeStyle: 'hotpink', fillStyle: 'pink'});
-
-      cv.artTo(200, 200, 450, 300, cv.disdanse.point(200, 200, 450, 300) / 2).draw('stroke');
-
-      let imgData = cv.getImageData();
-      let dataUrl = cv.toDataUrl();
-      let [cr, cg, cb] = tools.color2hex('hotpink', '');
-      let pointList = cv.getPointList((r, g, b, a, i) => {
-        return a && cr === r && cg === g && cb === b;
-      });
-      // pointList.map(([x, y]) => {
-      //   cv.setStyle('fillStyle', tools.rColor())
-      //     .beginPath()
-      //     .arc(x * tools.rNumber(1.02, 1, 9) * (-1) ** (tools.rNumber(10) % 2), y * tools.rNumber(1.02, 1, 9) * (-1) ** (tools.rNumber(10) % 2), tools.rNumber(2.3, 5.3, 3))
-      //     .draw('fill')
-      // });
-      cv.beginPath().point(450, 297, 3).draw('fill')
-      cv.setStyle('strokeStyle', 'blue');
-      let arr = [true, ...pointList];
-      cv.beginPath()
-        .setStyle('lineWidth', .5)
-        .line(...arr)
+      cv.save()
+        .translate(275, 200)
+        .setStyle('strokeStyle', '#666')
+        .line(true, [-275, 0], [275, 0])
+        .line(true, [0, 200], [0, -200])
         .draw('stroke');
-      // console.log(imgData);
-      // console.log(dataUrl);
-      console.log(pointList);
+      let lineArr = [line1, line2, line3, line4, line5];
+      ['red', 'green', 'blue', 'pink', '#f0f'].map((e, i) => {
+        cv.beginPath()
+          .setStyle('strokeStyle', e)
+          .line(true, cv.geometry.getPoint2line(lineArr[i], '', -275), cv.geometry.getPoint2line(lineArr[i], '', 275))
+          .draw('stroke')
+      })
 
     </script>
   </body>
