@@ -4,14 +4,17 @@ class CV {
   constructor(config) {
     typeof config === 'string' && (config = {el: config});
     let {el, width, height, context} = config;
-    let that = this;
     this.canvas = document.querySelector(el);
     this.canvas.width = width || this.canvas.width;
     this.canvas.height = height || this.canvas.height;
     this.ctx = this.canvas.getContext(context || '2d');
     this.defaultFontStyle = {size: '10px', family: 'sans-serif'};
     this.fontStyle = this.defaultFontStyle;
-    this.disdanse = {
+  }
+
+  distance() {
+    let that = this;
+    return {
       point(...points) {
         switch (points.length) {
           case 2:
@@ -33,11 +36,15 @@ class CV {
         if (!line1.a && !line2.a) return ((line2.c / line2.b - line1.c / line1.b) ** 2) ** .5;
         if (!line1.b && !line2.b) return ((line2.c / line2.a - line1.c / line1.a) ** 2) ** .5;
         if (line1.a / line1.b !== line2.a / line2.b) return 0;
-        let [x, y] = that.geometry.getPoint2line(line1);
+        let [x, y] = that.geometry().getPoint4line(line1);
         return this.point2line(x, y, line2);
       }
-    };
-    this.geometry = {
+    }
+  }
+
+  geometry() {
+    let that = this;
+    return {
       line(type = 'abc', ...arg) {
         let A, B, C;
         let [a, b, c, d] = arg.map(e => e * 1);
@@ -69,19 +76,48 @@ class CV {
             B = b;
             C = c;
         }
-        type = 'ax+by+c=0';
+        type = 'line';
         if (!(A ** 2 + B ** 2)) return false;
         return {a: A, b: B, c: C, type};
       },
-      getPoint2line(line, numType, num = 0) {
+      circle(type = 'xyr', ...arg) {
+        let [x, y, r] = arg;
+        switch (type) {
+          case 'def':
+            let [d, e, f] = arg;
+            x = -d / 2;
+            y = -e / 2;
+            r = (d ** 2 + e ** 2 - 4 * f) ** .5 * .5;
+            break;
+          case 'xyxyxy': // (x-a)^2+(y-b)^2=r^2 ||| x^2+y^2+dx+ey+f=0
+            let [x1, y1, x2, y2, x3, y3] = arg;
+
+        }
+        type = 'circle';
+        return {x, y, r, type};
+      },
+      getPoint4line(line, numType, num = 0) {
         // ax + by + c = 0 ; x = (-c -by) / a; y = (-c -ax) / b;
-        // 计算机坐标系y轴与数学坐标系y轴方向相反！
         let {a, b, c} = line;
         if (numType === 'y') {
-          return [-(c + b * num) / a, num * -1]; // -y
+          return [-(c + b * num) / a, num]; //
         } else {
-          return [num, -(c + a * num) / b * -1]; // -y
+          return [num, -(c + a * num) / b]; //
         }
+      },
+      intersection(g1, g2) {
+        let x, y;
+        let [t1, t2] = [g1.type, g2.type];
+        if (t1 === t2) {
+          switch (t1) {
+            case 'line': // x=(f/e-c/b)/(a/b-d/e) ax+by+c=0
+              x = (g2.c / g2.b - g1.c / g1.b) / (g1.a / g1.b - g2.a / g2.b);
+              y = (g1.a * x + g1.c) / -g1.b;
+              break;
+          }
+        } else {
+        }
+        return [x, y];
       }
     }
   }
@@ -220,7 +256,7 @@ class CV {
   artTo(x0, y0, x1, y1, r = 0, long = false) {
     // (x0 - x1) * (y0 - y1) > 0 ? (x0 = x1) : (y0 = y1);
     let [cx, cy] = [(x0 + x1) / 2, (y0 + y1) / 2];
-    let d = this.disdanse.point(x0, y0, x1, y1);
+    let d = this.distance().point(x0, y0, x1, y1);
     r < d / 2 && (r = d / 2 * 2 ** .5);
     let deg = this.deg2rad(Math.atan((y1 - y0) / (x1 - x0)), true);
     x0 > x1 && (deg -= 180);

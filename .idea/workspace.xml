@@ -23,8 +23,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="418">
-                  <caret line="54" column="22" lean-forward="true" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+                <state relative-caret-position="256">
+                  <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
                 </state>
               </provider>
             </entry>
@@ -66,7 +66,7 @@
           <file leaf-file-name="tools.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/tools.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-338">
+                <state relative-caret-position="1672">
                   <caret line="76" column="12" lean-forward="true" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="12" />
                 </state>
               </provider>
@@ -75,8 +75,8 @@
           <file leaf-file-name="cv.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/cv.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="310">
-                  <caret line="73" column="25" lean-forward="true" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
+                <state relative-caret-position="432">
+                  <caret line="311" column="3" lean-forward="true" selection-start-line="311" selection-start-column="3" selection-end-line="311" selection-end-column="3" />
                 </state>
               </provider>
             </entry>
@@ -122,6 +122,9 @@
       <find>restore</find>
       <find>draw</find>
       <find>drawType</find>
+      <find>disdanse</find>
+      <find>distance</find>
+      <find>getPoint2line</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -139,8 +142,8 @@
         <option value="$PROJECT_DIR$/js/global.js" />
         <option value="$PROJECT_DIR$/js/tools.js" />
         <option value="$PROJECT_DIR$/js/111.js" />
-        <option value="$PROJECT_DIR$/js/cv.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/cv.js" />
       </list>
     </option>
   </component>
@@ -165,6 +168,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -181,7 +185,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -243,12 +246,13 @@
       <workItem from="1548379674038" duration="405000" />
       <workItem from="1548380683604" duration="23645000" />
       <workItem from="1548464377843" duration="22369000" />
-      <workItem from="1548637252007" duration="19548000" />
+      <workItem from="1548637252007" duration="20901000" />
+      <workItem from="1548724814081" duration="14750000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="327100000" />
+    <option name="totallyTimeSpent" value="343203000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="884" extended-state="6" />
@@ -258,12 +262,12 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.21715818" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -838,22 +842,22 @@
     <entry file="file://$PROJECT_DIR$/js/111.js" />
     <entry file="file://$PROJECT_DIR$/js/tools.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-338">
+        <state relative-caret-position="1672">
           <caret line="76" column="12" lean-forward="true" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cv.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="73" column="25" lean-forward="true" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="54" column="22" lean-forward="true" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+        <state relative-caret-position="256">
+          <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cv.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="311" column="3" lean-forward="true" selection-start-line="311" selection-start-column="3" selection-end-line="311" selection-end-column="3" />
         </state>
       </provider>
     </entry>
