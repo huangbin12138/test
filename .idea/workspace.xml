@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2b45283-22f1-40a4-8f4f-ecd2e6f40f36" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/cv.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/cv.js" afterDir="false" />
-    </list>
+    <list default="true" id="f2b45283-22f1-40a4-8f4f-ecd2e6f40f36" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -23,8 +19,8 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="256">
-                  <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+                <state relative-caret-position="168">
+                  <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
@@ -75,8 +71,8 @@
           <file leaf-file-name="cv.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/cv.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="311" column="3" lean-forward="true" selection-start-line="311" selection-start-column="3" selection-end-line="311" selection-end-column="3" />
+                <state relative-caret-position="146">
+                  <caret line="298" column="16" lean-forward="true" selection-start-line="298" selection-start-column="16" selection-end-line="298" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -190,18 +186,18 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../page" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\huangb\dist\js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\huangb\dist\other" />
       <recent name="D:\huangb\dist" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\huangb\dist\js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -247,12 +243,12 @@
       <workItem from="1548380683604" duration="23645000" />
       <workItem from="1548464377843" duration="22369000" />
       <workItem from="1548637252007" duration="20901000" />
-      <workItem from="1548724814081" duration="14750000" />
+      <workItem from="1548724814081" duration="15418000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="343203000" />
+    <option name="totallyTimeSpent" value="343871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="884" extended-state="6" />
@@ -847,17 +843,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/js/cv.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+        <state relative-caret-position="146">
+          <caret line="298" column="16" lean-forward="true" selection-start-line="298" selection-start-column="16" selection-end-line="298" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/cv.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="311" column="3" lean-forward="true" selection-start-line="311" selection-start-column="3" selection-end-line="311" selection-end-column="3" />
+        <state relative-caret-position="168">
+          <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
         </state>
       </provider>
     </entry>
