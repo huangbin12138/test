@@ -33,6 +33,7 @@
       let tools = new T();
       let app = document.getElementById('app');
       let title = document.querySelector('title');
+      tools.isDom();
       let cvStr = `<canvas class="cv">can not use canvas</canvas>`;
       app.innerHTML = cvStr;
       title.textContent = tools.rString(4, '一');
