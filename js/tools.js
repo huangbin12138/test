@@ -78,12 +78,12 @@ class T {
    * @desc 生成随机颜色
    * @params {number} min=0 - r,g,b值的最小值，默认为0
    * @params {number} max=255 - r,g,b值的最大值，默认为255
-   * @params {string} type - 返回颜色值类型，可能值rgb | hex，其它匀返回[r, g, b]
+   * @params {string} type='hex' - 返回颜色值类型，可能值rgb | hex
    * @params {string/array}
    * @example
    * rColor() // [32, 23, 200]
    * */
-  rColor(min = 0, max = 255, type = '') {
+  rColor(min = 0, max = 255, type = 'hex') {
     min > max && (min = [max, max = min][0]);
     min = min < 0 ? 0 : min;
     max = max > 255 ? 255 : max;
